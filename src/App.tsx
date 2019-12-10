@@ -8,9 +8,9 @@ const App: React.FC = () => {
     return (
         <div className="App">
             <BrowserRouter>
-                <Link to="/">Home</Link><br/>
-                <Link to="/news">News</Link><br/>
-                <Link to="/about">About</Link>
+                <Link id="linkToHome" to="/">Home</Link><br/>
+                <Link id="linkToNews" to="/news">News</Link><br/>
+                <Link id="linktoAbout" to="/about">About</Link>
 
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/news" component={News}/>
