@@ -10,7 +10,7 @@ const App: React.FC = () => {
             <BrowserRouter>
                 <Link id="linkToHome" to="/">Home</Link><br/>
                 <Link id="linkToNews" to="/news">News</Link><br/>
-                <Link id="linktoAbout" to="/about">About</Link>
+                <Link id="linkToAbout" to="/about">About</Link>
 
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/news" component={News}/>

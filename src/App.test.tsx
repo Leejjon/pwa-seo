@@ -18,11 +18,16 @@ test('Verify page header', () => {
 
 test('Navigate to news', async () => {
     const {container} = render(<App/>);
-    let pageHeaderContent: Element = (container.querySelector('#pageHeader') as Element)?.firstChild?.textContent;
-    expect(pageHeaderContent).toMatch('Home page');
-
     const linkToNewsElement: Element = (container.querySelector('#linkToNews') as Element);
     fireEvent.click(linkToNewsElement);
-    pageHeaderContent = await waitForElement(() => container.querySelector('#pageHeader')?.firstChild?.textContent);
+    const pageHeaderContent = await waitForElement(() => container.querySelector('#pageHeader')?.firstChild?.textContent);
     expect(pageHeaderContent).toMatch('News page');
+});
+
+test('Navigate to about', async () => {
+    const {container} = render(<App/>);
+    const linkToAboutElement: Element = (container.querySelector('#linkToAbout') as Element);
+    fireEvent.click(linkToAboutElement);
+    const pageHeaderContent = await waitForElement(() => container.querySelector('#pageHeader')?.firstChild?.textContent);
+    expect(pageHeaderContent).toMatch('About page');
 });
