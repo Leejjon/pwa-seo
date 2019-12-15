@@ -10,7 +10,7 @@ test('renders without crashing', () => {
     ReactDOM.unmountComponentAtNode(div);
 });
 
-test('Verify page header', () => {
+test('Verify home page header', () => {
     const {container} = render(<App/>);
     const pageHeaderContent = container.querySelector("#pageHeader")?.firstChild?.textContent;
     expect(pageHeaderContent).toMatch('Home page');
