@@ -28,7 +28,6 @@ const App: React.FC = () => {
     }, [loading] /* Passing sure we don't run this side effect unless the loading is changed */ );
 
     return (
-        loading &&
         <div className="App">
             <BrowserRouter>
                 <Link id="linkToHome" to="/">{intl.get('HOME_LINK')}</Link><br/>
