@@ -11,7 +11,11 @@ const locales = {
 };
 
 const App: React.FC = () => {
-    const [loading, doneLoading] = useState(false);
+    const [loading, finishLoading] = useState(true);
+
+    const getMessage = (message: string): string => {
+        return intl.get(message);
+    };
 
     // Similar to componentDidMount and componentDidUpdate:
     useEffect(() => {
@@ -20,26 +24,30 @@ const App: React.FC = () => {
                 currentLocale: "en-US",
                 locales
             }).then(() => {
-                doneLoading(true);
+                finishLoading(false);
             });
         }
 
         initMessages().then(() => console.log('Done loading messages'));
     }, [loading] /* Passing sure we don't run this side effect unless the loading is changed */ );
 
-    return (
-        <div className="App">
-            <BrowserRouter>
-                <Link id="linkToHome" to="/">{intl.get('HOME_LINK')}</Link><br/>
-                <Link id="linkToNews" to="/news">News</Link><br/>
-                <Link id="linkToAbout" to="/about">About</Link>
+    if (loading) {
+        return (<div>Loading</div>);
+    } else {
+        return (
+            <div className="App">
+                <BrowserRouter>
+                    <Link id="linkToHome" to="/">{intl.get('HOME_LINK')}</Link><br/>
+                    <Link id="linkToNews" to="/news">News</Link><br/>
+                    <Link id="linkToAbout" to="/about">About</Link>
 
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/news" component={News}/>
-                <Route exact path="/about" component={About}/>
-            </BrowserRouter>
-        </div>
-    );
+                    <Route exact path="/"><Home getMessage={getMessage} /></Route>
+                    <Route exact path="/news" component={News}/>
+                    <Route exact path="/about" component={About}/>
+                </BrowserRouter>
+            </div>
+        );
+    }
 };
 
 export default App;
