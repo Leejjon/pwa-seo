@@ -16,8 +16,14 @@ const App: React.FC = () => {
     // Similar to componentDidMount and componentDidUpdate:
     useEffect(() => {
         async function initMessages() {
+            let currentLocale;
+            if ( window.location.hostname === '127.0.0.1') {
+                currentLocale = 'nl-NL';
+            } else {
+                currentLocale = 'en-US';
+            }
             await intl.init({
-                currentLocale: "en-US",
+                currentLocale: currentLocale,
                 locales
             });
         }
