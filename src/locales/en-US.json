@@ -1,6 +1,12 @@
 {
-  "TITLE": "Multilingual Progressive Web App created with React and TypeScript",
-  "HOME_LINK": "Home",
+  "ABOUT_CONTENT": "This is the about page",
+  "ABOUT_HEADER": "About page",
+  "ABOUT_LINK": "About",
+  "HOME_CONTENT": "This is the home page",
   "HOME_HEADER": "Home page",
-  "HOME_CONTENT": "This is the home page"
+  "HOME_LINK": "Home",
+  "NEWS_CONTENT": "This is the news page",
+  "NEWS_HEADER": "News page",
+  "NEWS_LINK": "News",
+  "TITLE": "Multilingual Progressive Web App created with React and TypeScript"
 }

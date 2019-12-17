@@ -1,10 +1,11 @@
 import React from 'react';
+import intl from 'react-intl-universal';
 
 const About: React.FC = () => {
     return (
         <div>
-            <h1 id='pageHeaderq'>About page</h1>
-            <p>This is the about page</p>
+            <h1 id='pageHeader'>{intl.get('ABOUT_HEADER')}</h1>
+            <p>{intl.get('ABOUT_CONTENT')}</p>
         </div>
     );
 };
