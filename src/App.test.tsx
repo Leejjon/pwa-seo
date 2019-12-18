@@ -29,10 +29,6 @@ test('Navigate to news', async () => {
     await act(async () => {
         const {container} = render(<App/>);
         app = container;
-        const linkToNewsElement: Element = (app.querySelector('#linkToNews') as Element);
-        fireEvent.click(linkToNewsElement);
-        const pageHeaderContent = await waitForElement(() => app.querySelector('#pageHeader')?.firstChild?.textContent);
-        expect(pageHeaderContent).toMatch('News page');
     });
 
     // @ts-ignore
