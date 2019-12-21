@@ -1,50 +1,31 @@
 import React from 'react';
-import {act, render, fireEvent, waitForElement} from '@testing-library/react';
+import {render, fireEvent, waitForElement} from '@testing-library/react';
 import "@testing-library/jest-dom/extend-expect";
 import App from './App';
 import './locales/i18n';
 
 test('Renders without crashing', async() => {
-    await act(async () => {
-        render(<App/>);
-    });
+    render(<App/>);
 });
 
 test('Verify home page header', async() => {
-    let app: HTMLElement | undefined = undefined;
-    await act(async () => {
-        const {container} = render(<App/>);
-        app = container;
-    });
-    let appAsHtmlElement = (app as unknown as HTMLElement);
-    const pageHeaderContent = appAsHtmlElement.querySelector("#pageHeader")?.firstChild?.textContent;
+    const {container} = render(<App/>);
+    const pageHeaderContent = container.querySelector("#pageHeader")?.firstChild?.textContent;
     expect(pageHeaderContent).toMatch('Home page');
 });
 
 test('Navigate to news', async () => {
-    let app: HTMLElement | undefined = undefined;
-    await act(async () => {
-        const {container} = render(<App/>);
-        app = container;
-    });
-
-    let appAsHtmlElement = (app as unknown as HTMLElement);
-    const linkToNewsElement: Element = (appAsHtmlElement.querySelector('#linkToNews') as Element);
+    const {container} = render(<App/>);
+    const linkToNewsElement: Element = (container.querySelector('#linkToNews') as Element);
     fireEvent.click(linkToNewsElement);
-    const pageHeaderContent = await waitForElement(() => appAsHtmlElement.querySelector('#pageHeader')?.firstChild?.textContent);
+    const pageHeaderContent = await waitForElement(() => container.querySelector('#pageHeader')?.firstChild?.textContent);
     expect(pageHeaderContent).toMatch('News page');
 });
 
 test('Navigate to about', async () => {
-    let app: HTMLElement | undefined = undefined;
-    await act(async () => {
-        const {container} = render(<App/>);
-        app = container;
-    });
-
-    let appAsHtmlElement = (app as unknown as HTMLElement);
-    const linkToAboutElement: Element = (appAsHtmlElement.querySelector('#linkToAbout') as Element);
+    const {container} = render(<App/>);
+    const linkToAboutElement: Element = (container.querySelector('#linkToAbout') as Element);
     fireEvent.click(linkToAboutElement);
-    const pageHeaderContent = await waitForElement(() => appAsHtmlElement.querySelector('#pageHeader')?.firstChild?.textContent);
+    const pageHeaderContent = await waitForElement(() => container.querySelector('#pageHeader')?.firstChild?.textContent);
     expect(pageHeaderContent).toMatch('About page');
 });
