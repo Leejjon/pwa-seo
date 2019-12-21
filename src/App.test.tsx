@@ -2,6 +2,7 @@ import React from 'react';
 import {act, render, fireEvent, waitForElement} from '@testing-library/react';
 import "@testing-library/jest-dom/extend-expect";
 import App from './App';
+import './locales/i18n';
 
 test('Renders without crashing', async() => {
     await act(async () => {

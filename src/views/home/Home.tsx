@@ -1,11 +1,12 @@
 import React from 'react';
-import intl from 'react-intl-universal';
+import {useTranslation} from "react-i18next";
 
 const Home: React.FC = () => {
+    const { t } = useTranslation();
     return (
         <div>
-            <h1 id="pageHeader">{intl.get('HOME_HEADER')}</h1>
-            <p>{intl.get('HOME_CONTENT')}</p>
+            <h1 id="pageHeader">{t('HOME_HEADER')}</h1>
+            <p>{t('HOME_CONTENT')}</p>
         </div>
     );
 };
