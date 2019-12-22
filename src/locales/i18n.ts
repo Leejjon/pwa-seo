@@ -15,7 +15,8 @@ const resources = {
             "NEWS_CONTENT": "This is the news page",
             "NEWS_HEADER": "News page",
             "NEWS_LINK": "News",
-            "TITLE": "Multilingual Progressive Web App created with React and TypeScript"
+            "TITLE": "pwa-seo",
+            "DESCRIPTION": "Multilingual Progressive Web App created with React and TypeScript"
         }
     },
     nl: {
@@ -29,7 +30,8 @@ const resources = {
             "NEWS_CONTENT": "Dit is de nieuws pagina",
             "NEWS_HEADER": "Nieuws pagina",
             "NEWS_LINK": "Nieuws",
-            "TITLE": "Meertalige Progressieve Web App gemaakt met React en TypeScript"
+            "TITLE": "pwa-seo",
+            "DESCRIPTION": "Meertalige Progressieve Web App gemaakt met React en TypeScript"
         }
     }
 };

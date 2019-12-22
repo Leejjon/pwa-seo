@@ -1,14 +1,16 @@
 import React from 'react';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Home from './views/home/Home';
 import News from './views/news/News';
 import About from './views/about/About';
-import { useTranslation } from 'react-i18next';
+import PageHelmet from "./components/page-helmet/PageHelmet";
 
 const App: React.FC = () => {
     const { t } = useTranslation();
     return (
         <div className="App">
+            <PageHelmet pageTitle={t('TITLE')} pageDescription={t('DESCRIPTION')} />
             <BrowserRouter>
                 <Link id="linkToHome" to="/">
                     {t('HOME_LINK')}
