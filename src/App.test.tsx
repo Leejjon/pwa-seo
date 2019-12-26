@@ -63,7 +63,7 @@ describe('Test Dutch pages', () => {
     });
 
     test('Verify home page content', async () => {
-        const {container, getByTestId} = render(<App/>);
+        const {container} = render(<App/>);
         const pageHeaderContent = container.querySelector('#pageHeader')?.firstChild?.textContent;
         expect(pageHeaderContent).toMatch('Thuis pagina');
 
