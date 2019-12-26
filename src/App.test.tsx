@@ -34,7 +34,7 @@ describe('Test english pages', () => {
     });
 
     test('Navigate to about', async () => {
-        const {container} = render(<App/>);
+        const {container, getByTestId} = render(<App/>);
         const pageHeaderContent = container.querySelector('#pageHeader')?.firstChild?.textContent;
         expect(pageHeaderContent).toMatch('Home page');
 
@@ -49,7 +49,7 @@ describe('Test english pages', () => {
 });
 
 describe('Test Dutch pages', () => {
-    beforeAll(() => {
+    beforeEach(() => {
         i18next.changeLanguage('nl');
     });
 
