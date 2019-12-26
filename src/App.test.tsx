@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, fireEvent, waitForElement, waitForDomChange} from '@testing-library/react';
+import {render, fireEvent, waitForElement, waitForDomChange, within} from '@testing-library/react';
 import App from './App';
 import './locales/i18n';
 import i18next from "i18next";
@@ -18,6 +18,9 @@ describe('Test english pages', () => {
 
         await waitForDomChange();
         expect(document.title).toMatch('Home page');
+
+        const descriptionMetaTag = within(document.head).getByTestId('metaDescription');
+        expect(descriptionMetaTag?.content).toMatch('This is the home page');
     });
 
     test('Navigate to news', async () => {
@@ -31,6 +34,9 @@ describe('Test english pages', () => {
 
         await waitForDomChange();
         expect(document.title).toMatch('News page');
+
+        const descriptionMetaTag = within(document.head).getByTestId('metaDescription');
+        expect(descriptionMetaTag?.content).toMatch('This is the news page');
     });
 
     test('Navigate to about', async () => {
@@ -45,6 +51,9 @@ describe('Test english pages', () => {
 
         await waitForDomChange();
         expect(document.title).toMatch('About page');
+
+        const descriptionMetaTag = within(document.head).getByTestId('metaDescription');
+        expect(descriptionMetaTag?.content).toMatch('This is the about page');
     });
 });
 
@@ -54,11 +63,14 @@ describe('Test Dutch pages', () => {
     });
 
     test('Verify home page content', async () => {
-        const {container} = render(<App/>);
+        const {container, getByTestId} = render(<App/>);
         const pageHeaderContent = container.querySelector('#pageHeader')?.firstChild?.textContent;
         expect(pageHeaderContent).toMatch('Thuis pagina');
 
         await waitForDomChange();
         expect(document.title).toMatch('Thuis pagina');
+
+        const descriptionMetaTag = within(document.head).getByTestId('metaDescription');
+        expect(descriptionMetaTag?.content).toMatch('Dit is de thuis pagina');
     });
 });

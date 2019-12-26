@@ -9,6 +9,7 @@ const Home: React.FC = () => {
             <PageHelmet pageTitle={t('HOME_HEADER')} pageDescription={t('HOME_CONTENT')} />
             <h1 id="pageHeader">{t('HOME_HEADER')}</h1>
             <p>{t('HOME_CONTENT')}</p>
+            <br data-test-id="testId" />
         </div>
     );
 };

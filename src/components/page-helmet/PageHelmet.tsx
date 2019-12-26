@@ -10,7 +10,7 @@ const PageHelmet: React.FC<PageHelmetProps> = ({ pageTitle, pageDescription}) =>
     return (
         <Helmet>
             <title>{pageTitle}</title>
-            <meta name="description" content={pageDescription} />
+            <meta name="description" content={pageDescription} data-testid="metaDescription" />
         </Helmet>
     );
 };
