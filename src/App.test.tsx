@@ -19,8 +19,13 @@ describe('Test english pages', () => {
         await waitForDomChange();
         expect(document.title).toMatch('Home page');
 
-        const descriptionMetaTag = within(document.head).getByTestId('metaDescription');
-        expect(descriptionMetaTag?.content).toMatch('This is the home page');
+        const descriptionMetaTag = within(document.head).getByTestId('metaDescription') as any as HTMLMetaElement;
+        expect(descriptionMetaTag.content).toMatch('This is the home page');
+
+        const alternateLinkNL = within(document.head).getByTestId('alternateLinkNL') as any as HTMLLinkElement;
+        expect(alternateLinkNL.rel).toMatch('alternate');
+        expect(alternateLinkNL.hreflang).toMatch('nl');
+        expect(alternateLinkNL.href).toMatch('http://127.0.0.1/');
     });
 
     test('Navigate to news', async () => {
@@ -35,8 +40,13 @@ describe('Test english pages', () => {
         await waitForDomChange();
         expect(document.title).toMatch('News page');
 
-        const descriptionMetaTag = within(document.head).getByTestId('metaDescription');
-        expect(descriptionMetaTag?.content).toMatch('This is the news page');
+        const descriptionMetaTag = within(document.head).getByTestId('metaDescription') as any as HTMLMetaElement;
+        expect(descriptionMetaTag.content).toMatch('This is the news page');
+
+        const alternateLinkNL = within(document.head).getByTestId('alternateLinkNL') as any as HTMLLinkElement;
+        expect(alternateLinkNL.rel).toMatch('alternate');
+        expect(alternateLinkNL.hreflang).toMatch('nl');
+        expect(alternateLinkNL.href).toMatch('http://127.0.0.1/news');
     });
 
     test('Navigate to about', async () => {
@@ -52,12 +62,23 @@ describe('Test english pages', () => {
         await waitForDomChange();
         expect(document.title).toMatch('About page');
 
-        const descriptionMetaTag = within(document.head).getByTestId('metaDescription');
-        expect(descriptionMetaTag?.content).toMatch('This is the about page');
+        const descriptionMetaTag = within(document.head).getByTestId('metaDescription') as any as HTMLMetaElement;
+        expect(descriptionMetaTag.content).toMatch('This is the about page');
+
+        const alternateLinkNL = within(document.head).getByTestId('alternateLinkNL') as any as HTMLLinkElement;
+        expect(alternateLinkNL.rel).toMatch('alternate');
+        expect(alternateLinkNL.hreflang).toMatch('nl');
+        expect(alternateLinkNL.href).toMatch('http://127.0.0.1/about');
     });
 });
 
 describe('Test Dutch pages', () => {
+    beforeEach(() => {
+        delete window.location;
+        //@ts-ignore
+        window.location = new URL('http://127.0.0.1');
+    });
+
     beforeEach(() => {
         i18next.changeLanguage('nl');
     });
@@ -70,7 +91,12 @@ describe('Test Dutch pages', () => {
         await waitForDomChange();
         expect(document.title).toMatch('Thuis pagina');
 
-        const descriptionMetaTag = within(document.head).getByTestId('metaDescription');
-        expect(descriptionMetaTag?.content).toMatch('Dit is de thuis pagina');
+        const descriptionMetaTag = within(document.head).getByTestId('metaDescription') as any as HTMLMetaElement;
+        expect(descriptionMetaTag.content).toMatch('Dit is de thuis pagina');
+
+        const alternateLinkEN = within(document.head).getByTestId('alternateLinkEN') as any as HTMLLinkElement;
+        expect(alternateLinkEN.rel).toMatch('alternate');
+        expect(alternateLinkEN.hreflang).toMatch('en');
+        expect(alternateLinkEN.href).toMatch('http://localhost/');
     });
 });
